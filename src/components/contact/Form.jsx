@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import emailjs from "@emailjs/browser";
 
 
 
@@ -38,43 +39,42 @@ const Form = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          budget: Number(formData.budget), // cast to number
-        }),
+      await emailjs.send(
+        "service_zk8w68n",
+        "template_lfq2v6w",
+        formData,
+        {
+          publicKey: "05AJi1l7-DC5NWNGl",
+        }
+      );
+
+      toast.success("Message sent successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        location: "",
+        budget: "",
+        subject: "",
+        message: "",
       });
 
-      const data = await res.json();
-
-      if (data.success) {
-        toast.success("Mail sent successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          location: "",
-          budget: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        console.error(data.error); // backend error log
-        toast.error("Mail sending failed: " + (data.error || "Unknown error"));
-      }
     } catch (error) {
-     console.error(error);
-      toast.error("Server error! " + error.message);
-    }
+      console.error(error);
+      toast.error("Failed to send message!");
+    } 
   };
 
+  
   return (
     <div>
       <p className="text-[12px] xs:text-[14px] max-lg:text-center sm:text-lg font-normal text-soft-dark">
