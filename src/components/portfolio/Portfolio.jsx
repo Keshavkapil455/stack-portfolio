@@ -2,7 +2,7 @@ import Projects from "./Projects";
 import card1 from "../../assets/images/portfolio-images/upsc.jpeg";
 import card2 from "../../assets/images/portfolio-images/gazania.jpeg";
 import card3 from "../../assets/images/portfolio-images/pet.jpeg";
-import card4 from "../../assets/images/portfolio-images/shop.jpeg";
+import card4 from "../../assets/images/portfolio-images/Workspace.png";
 import card5 from "../../assets/images/portfolio-images/hamro.jpeg";
 import card6 from "../../assets/images/portfolio-images/patanjali.jpeg";
 
@@ -41,7 +41,7 @@ const projectData = [
   id: 4,
   image: card4,
   type: "E-commerce (Full-Stack)",
-  title: "MyShop",
+  title: "Personal Project",
   description:
     "Developed a complete e-commerce application with both frontend and backend, implementing REST APIs, authentication, product management, and a fully responsive admin dashboard.",
   link: "#!",
@@ -64,7 +64,7 @@ const projectData = [
   title: "PYP Nepal",
   description:
     "Designed responsive pages, updated website content, and integrated a Nepal map to create a localized and user-friendly experience for a Nepal-based organization.",
-  link: "https://agromni.co.in/pypnepal1/",
+  link: "#!",
 },
 
 ];
